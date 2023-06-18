@@ -109,3 +109,17 @@ public:
             heapify(arr, i, 0);
         }
     }
+
+
+//Priority queue based soln
+    void heapSort(int arr[], int n){
+    priority_queue<int, vector<int>, greater<int> > pq;
+    for(int i=0; i<n; i++){
+        pq.push(arr[i]);
+       }
+        int i = 0;
+        while(!pq.empty()){
+            arr[i] = pq.top();
+            pq.pop();
+            i++;
+        }
