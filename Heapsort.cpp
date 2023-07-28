@@ -123,3 +123,50 @@ public:
             pq.pop();
             i++;
         }
+
+//Slight change
+   void heapify(int arr[], int n, int i)  
+    {
+        
+        int largest=i;
+        int left=2*i+1;
+        int right=2*i+2;
+            if( left<n && arr[largest]<arr[left])
+                largest=left;
+            
+            if( right<n && arr[largest]<arr[right])
+            largest=right;
+            
+            if(largest!=i){//it means a child node is greater 
+                swap(arr[largest],arr[i]);
+                heapify(arr,n,largest); //call heapify on new position of original node
+            }
+            
+            
+        
+    }
+
+    public:
+    //Function to build a Heap from array.
+    void buildHeap(int arr[], int n)  
+    { 
+        
+        for(int i=n/2;i>=0;i--){
+        heapify(arr,n,i);
+        }
+         
+    }
+
+    
+    public:
+    //Function to sort an array using Heap Sort.
+    void heapSort(int arr[], int n)
+    {
+        buildHeap(arr,n);
+        while(n>0){
+            swap(arr[0],arr[n-1]); //make top of heap(max element ) the last element 
+            n--;
+            heapify(arr,n,0);
+           
+        }
+    }
